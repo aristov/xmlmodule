@@ -20,4 +20,7 @@ const xmldoc = new XMLDocumentAssembler({
     ]
 })
 
-xmldoc.documentElement.append(cdata(xmldoc.serialize()))
+cdata({
+    parentNode : xmldoc.documentElement,
+    data : xmldoc.serialize()
+})
