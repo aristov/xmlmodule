@@ -1,6 +1,6 @@
 import {
     XMLDocumentAssembler,
-    base, cdata, element, id,
+    base, cdata, element, id, instruction,
     lang, space, stylesheet, xmlns
 } from '../lib'
 
@@ -15,7 +15,8 @@ const xmldoc = new XMLDocumentAssembler({
                 lang('ru'),
                 space('preserve'),
                 xmlns('http://example.org/namespace')
-            ]
+            ],
+            childNodes: instruction('example')
         })
     ]
 })

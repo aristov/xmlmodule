@@ -8,18 +8,19 @@ This JavaScript library provides a set of [DOM](https://www.w3.org/TR/dom) assem
 - The [xml:id](https://www.w3.org/TR/xml-id) attribute
 - The [xml:lang](https://www.w3.org/TR/xml/#sec-lang-tag) attribute
 - The [xml:space](https://www.w3.org/TR/xml/#sec-white-space) attribute
-- The [xmlns](https://www.w3.org/TR/REC-xml-names) attribute
-- The [Element](https://www.w3.org/TR/xml/#dt-element) interface with predefined accessors for the xml:* and xmlns attributes
-- The [XMLDocument](https://www.w3.org/TR/dom/#xmldocument) interface
-- The [CDATASection](https://www.w3.org/TR/xml/#sec-cdata-sect) interface
+- The [Element](https://www.w3.org/TR/xml/#dt-element) [DOM interface](https://www.w3.org/TR/dom/#interface-element) with predefined accessors for the xml:* attributes
+- The [XMLDocument](https://www.w3.org/TR/xml/#sec-documents) [DOM interface](https://www.w3.org/TR/dom/#xmldocument)
+- The [ProcessingInstruction](https://www.w3.org/TR/xml/#sec-pi) [DOM interface](https://www.w3.org/TR/dom/#interface-processinginstruction)
+- The [CDATASection](https://www.w3.org/TR/xml/#sec-cdata-sect) [DOM interface](https://dom.spec.whatwg.org/#interface-cdatasection)
 - The [xml-stylesheet](https://www.w3.org/TR/xml-stylesheet) processing instruction
+- The [xmlns](https://www.w3.org/TR/REC-xml-names) attribute
 
 ## Example
 
 ```js
 import {
     XMLDocumentAssembler,
-    base, cdata, element, id,
+    base, cdata, element, id, instruction,
     lang, space, stylesheet, xmlns
 } from 'xmlmodule'
 
@@ -33,7 +34,10 @@ new XMLDocumentAssembler([
             space('preserve'),
             xmlns('http://example.org/namespace')
         ],
-        childNodes : cdata('<<example>>')
+        childNodes : [
+            instruction('example'),
+            cdata('<<example>>')
+        ]
     })
 ])
 ```
@@ -47,6 +51,7 @@ This code produces an XML document with the following structure:
          xml:lang="ru"
          xml:space="preserve"
          xmlns="http://example.org/namespace">
+    <?instruction example?>
     <![CDATA[<<example>>]]>
 </element>
 ```
