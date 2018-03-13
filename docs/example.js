@@ -16,7 +16,7 @@ const xmldoc = new XMLDocumentAssembler({
                 space('preserve'),
                 xmlns('http://example.org/namespace')
             ],
-            childNodes: instruction('example')
+            childNodes : instruction('example')
         })
     ]
 })
