@@ -43,7 +43,7 @@
   },
   "homepage": "https://github.com/aristov/xmlmodule#readme",
   "dependencies": {
-    "dommodule": "github:aristov/dommodule#v0.7"
+    "dommodule": "github:aristov/dommodule"
   },
   "devDependencies": {
     "webpack": "^3.11.0"
