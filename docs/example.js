@@ -3,10 +3,10 @@ import {
     XMLBase,
     CDATASectionAssembler,
     XMLElementAssembler,
-    Id,
+    XMLId,
     ProcessingInstructionAssembler,
-    Lang,
-    Space,
+    XMLLang,
+    XMLSpace,
     XMLStylesheet,
     Xmlns
 } from '../lib'
@@ -18,9 +18,9 @@ const xmldoc = new XMLDocumentAssembler({
         new XMLElementAssembler({
             attributes : [
                 new XMLBase('http://example.org/'),
-                new Id('example'),
-                new Lang('ru'),
-                new Space('preserve'),
+                new XMLId('example'),
+                new XMLLang('ru'),
+                new XMLSpace('preserve'),
                 new Xmlns('http://example.org/namespace')
             ],
             children : new ProcessingInstructionAssembler('example')
