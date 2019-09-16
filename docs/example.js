@@ -1,27 +1,34 @@
 import {
     XMLDocumentAssembler,
-    base, cdata, element, id, instruction,
-    lang, space, stylesheet, xmlns
+    XMLBase,
+    CDATASectionAssembler,
+    XMLElementAssembler,
+    Id,
+    ProcessingInstructionAssembler,
+    Lang,
+    Space,
+    XMLStylesheet,
+    Xmlns
 } from '../lib'
 
 const xmldoc = new XMLDocumentAssembler({
     node : document,
-    childNodes : [
-        stylesheet({ href : 'example.css' }),
-        element({
+    children : [
+        new XMLStylesheet({ href : 'example.css' }),
+        new XMLElementAssembler({
             attributes : [
-                base('http://example.org/'),
-                id('example'),
-                lang('ru'),
-                space('preserve'),
-                xmlns('http://example.org/namespace')
+                new XMLBase('http://example.org/'),
+                new Id('example'),
+                new Lang('ru'),
+                new Space('preserve'),
+                new Xmlns('http://example.org/namespace')
             ],
-            childNodes : instruction('example')
+            children : new ProcessingInstructionAssembler('example')
         })
     ]
 })
 
-cdata({
+new CDATASectionAssembler({
     parentNode : xmldoc.documentElement,
     data : xmldoc.serialize()
 })
