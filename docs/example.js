@@ -1,3 +1,4 @@
+import { NodeAssembler } from 'dommodule/lib'
 import {
     XMLDocumentAssembler,
     XMLBase,
@@ -9,7 +10,9 @@ import {
     XMLSpace,
     XMLStylesheet,
     Xmlns
-} from '../lib'
+} from './xmlmodule'
+
+NodeAssembler.debug()
 
 const xmldoc = new XMLDocumentAssembler({
     node : document,
